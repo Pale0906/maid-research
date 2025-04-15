@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>澳門女僕咖啡廳 | 女僕研究所</title>
+      
+         <!-- 固定結構模組 -->
+         <link rel="stylesheet" href="/css/sidebar.css" />
+         <link rel="stylesheet" href="/css/header.css" />
+         <link rel="stylesheet" href="/css/footer.css" />
+ 
+         <!-- 內容與功能模組 -->
+         <link rel="stylesheet" href="/css/filter.css" />
+         <link rel="stylesheet" href="/css/content-layout.css" />
+         <link rel="stylesheet" href="/css/cafe-card.css" />
+ 
+         <!-- 通用底層樣式 -->
+         <link rel="stylesheet" href="/css/style.css" />
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+      </head>      
+<body>
+     <!-- 📱 漢堡選單 -->
+     <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+
+     <!-- 側邊導覽列 -->
+     <div id="nav-placeholder"></div>
+         <!-- 橫額 -->
+         <div id="header-placeholder"></div>
+   
+     <!-- 主內容容器 -->
+     <div class="content-shift">
+   
+       <!-- 主區塊：左側為篩選器，右側為店鋪列表 -->
+       <div class="main-flex">
+           <!-- 顯示篩選器按鈕 -->
+           <button class="filter-toggle" onclick="toggleFilter()">顯示篩選器</button>
+   
+      <!-- 篩選器區塊（暫不啟用） -->
+      <section class="filter-panel" id="filter-panel">
+        <h2>篩選條件（未啟用）</h2>
+        <p>由於店舖數量較少，目前未提供篩選功能。</p>
+      </section>
+
+      <!-- 資料卡片清單 -->
+      <section class="cafe-list">
+
+        <!-- 菓子女僕 -->
+        <div class="cafe-card"
+          data-theme="女僕主題"
+          data-type="主食"
+          data-days="Tue,Wed,Thu,Fri,Sat,Sun"
+          data-open="14.0"
+          data-close="21.0"
+          data-cost="50"
+          data-area="澳門"
+          data-status="open">
+
+          <div class="cafe-image">
+            <img src="/assets/images/cafes/okashi.jpg" alt="菓子女僕 圖片">
+          </div>
+
+          <h3 class="cafe-name">菓子女僕</h3>
+
+          <div class="cafe-tags">
+            <span class="tag theme">女僕主題</span>
+            <span class="tag type">提供主食</span>
+          </div>
+
+          <p class="cafe-address">飛能便度圍12A號CR/C單位珍珠閣地面層</p>
+
+          <div class="cafe-socials">
+            <a href="https://www.instagram.com/okashinomaid/" target="_blank">
+                <i class="fab fa-instagram"></i>Instagram
+            </a>
+          </div>
+          <p class="cafe-cost">最低消費：MOP 50 / 2小時</p>
+          <details class="cafe-hours">
+            <summary>營業時間</summary>
+            <ul>
+              <li>星期一：休息</li>
+              <li>星期二：16:00–21:00</li>
+              <li>星期三：16:00–21:00</li>
+              <li>星期四：16:00–21:00</li>
+              <li>星期五：16:00–21:00</li>
+              <li>星期六：14:00–21:00</li>
+              <li>星期日：14:00–21:00</li>
+            </ul>
+          </details>
+        </div>
+
+        <!-- Maid Magica -->
+        <div class="cafe-card"
+          data-theme="女僕主題"
+          data-type="主食"
+          data-days="Tue,Wed,Thu,Fri,Sat,Sun"
+          data-open="15.0"
+          data-close="21.0"
+          data-cost="70"
+          data-area="澳門"
+          data-status="open">
+
+          <div class="cafe-image">
+            <img src="/assets/images/cafes/magica.jpg" alt="Maid Magica 圖片">
+          </div>
+
+          <h3 class="cafe-name">Maid Magica</h3>
+
+          <div class="cafe-tags">
+            <span class="tag theme">女僕主題</span>
+            <span class="tag type">提供主食</span>
+          </div>
+
+          <p class="cafe-address">高園街達信大廈地下4C</p>
+
+          <div class="cafe-socials">
+            <a href="https://www.instagram.com/maidmagica/" target="_blank">
+                <i class="fab fa-instagram"></i>Instagram
+            </a>
+          </div>
+          <p class="cafe-cost">最低消費：MOP 70 / 2 小時</p>
+          <details class="cafe-hours">
+            <summary>營業時間</summary>
+            <ul>
+              <li>星期一：休息</li>
+              <li>星期二：17:00–21:00</li>
+              <li>星期三：17:00–21:00</li>
+              <li>星期四：17:00–21:00</li>
+              <li>星期五：17:00–21:00</li>
+              <li>星期六：15:00–21:00</li>
+              <li>星期日：15:00–21:00</li>
+            </ul>
+          </details>
+        </div>
+
+      </section>
+    </div>
+  </div>
+
+  <!-- 頁尾 -->
+  <div id="footer-placeholder"></div>
+
+<!-- 載入共用組件 -->
+<script>
+    fetch("/components/navigation.html").then(res => res.text()).then(data => {
+      const nav = document.createElement("div");
+      nav.innerHTML = data;
+      document.getElementById("nav-placeholder").replaceWith(...nav.childNodes);
+    });
+  
+    fetch("/components/header.html").then(res => res.text()).then(data => {
+      document.getElementById("header-placeholder").innerHTML = data;
+    });
+  
+    fetch("/components/footer.html").then(res => res.text()).then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+  </script>
+  
+  <!-- 模組化 JS -->
+  <script src="/js/slideshow.js"></script>
+  <script src="/js/sidebar.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/filter.js"></script>
+</body>
+</html>

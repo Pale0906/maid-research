@@ -1,0 +1,98 @@
+.about-container {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .about-intro, .about-members {
+    margin-bottom: 3rem;
+  }
+  
+  .contributions {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .contributions li {
+    margin: 0.5rem 0;
+  }
+  
+  .member-card {
+    border: 2px solid var(--primary-color, #007bff);
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 300px;
+  }
+  
+  .member-card h4 {
+    margin-top: 0;
+  }
+  
+  .social-toggle-btn {
+    margin-top: 1rem;
+    background-color: var(--primary-color, #007bff);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .personal-links {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+  }
+  
+  .personal-links li {
+    margin: 0.3rem 0;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+    /* ✅ 社群連結 */
+    .member-socials {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+      
+      .member-socials a {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        background-color: #f5f7ff;
+        border: 1px solid #d6e0ff;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #375a7f;
+        text-decoration: none;
+        transition: all 0.25s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+      
+      .member-socials a i {
+        font-size: 1rem;
+        color: #4e79ff;
+        transition: transform 0.2s ease;
+      }
+      
+      .member-socials a:hover {
+        background-color: #e1eaff;
+        border-color: #4e79ff;
+        color: #1e3f8f;
+      }
+      
+      .member-socials a:hover i {
+        transform: scale(1.2);
+        color: #2f60ff;
+      }
+      

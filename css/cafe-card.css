@@ -1,0 +1,210 @@
+/* ===============================
+   🏪 咖啡廳卡片樣式 - cafe-card.css
+   =============================== */
+
+   .cafe-card {
+    min-width: 375px;
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid var(--card-border-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    padding: 24px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  
+  .cafe-card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+  
+  /* ✅ 圖片區 */
+  .cafe-image {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  
+  .cafe-image img {
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* ✅ 店名 */
+  .cafe-name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--title-color);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  
+  /* ✅ 標籤區 */
+  .cafe-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .tag {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  .tag.theme {
+    background-color: #6e91ff;
+    color: #fff;
+  }
+  
+  .tag.type {
+    background-color: #a3d8ff;
+    color: #222;
+  }
+  
+  /* ✅ 地址 */
+  .cafe-address {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  /* ✅ 社群連結 */
+  .cafe-socials {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  
+  .cafe-socials a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background-color: #f5f7ff;
+    border: 1px solid #d6e0ff;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #375a7f;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .cafe-socials a i {
+    font-size: 1rem;
+    color: #4e79ff;
+    transition: transform 0.2s ease;
+  }
+  
+  .cafe-socials a:hover {
+    background-color: #e1eaff;
+    border-color: #4e79ff;
+    color: #1e3f8f;
+  }
+  
+  .cafe-socials a:hover i {
+    transform: scale(1.2);
+    color: #2f60ff;
+  }
+  
+/* ===============================
+   🕒 營業時間區塊樣式
+   =============================== */
+
+   .cafe-hours {
+    background-color: #eef3ff;
+    border-radius: 8px;
+    margin-top: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 1px;
+  }
+  
+  .cafe-hours summary {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    padding: 12px 16px;
+    background-color: #dce8ff;
+    border-radius: 8x;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .cafe-hours summary::before {
+    content: "🕒";
+    font-size: 1.2rem;
+  }
+  
+  .cafe-hours summary:hover {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .cafe-hours ul {
+    padding-left: 20px;
+    margin-top: 6px;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+  }
+  
+  .cafe-hours ul li {
+    margin-bottom: 4px;
+    list-style-type: none; /* 隱藏項目點 */
+    display: flex;
+    align-items: center;
+  }
+  
+  .cafe-hours ul li::before {
+    content: "📅 ";
+    font-size: 1.1rem;
+    margin-right: 6px;
+  }
+  
+  .cafe-hours ul li span {
+    font-size: 0.95rem;
+    color: #777;
+    font-weight: 500;
+  }
+  
+  .cafe-hours ul li:not(:last-child) {
+    border-bottom: 1px solid #ddd; /* 在每一行下方加細邊框 */
+    padding-bottom: 8px;
+  }
+  
+  .cafe-note {
+    margin-top: 12px;
+    text-align: center;
+  }
+  
+  .cafe-note a {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+  
+  .cafe-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 兩欄顯示 */
+    gap: 24px; /* 控制卡片間距 */
+  }
+  
+  @media screen and (max-width: 1023px) {
+    .cafe-list {
+      grid-template-columns: 1fr; /* 小於1024px時顯示單欄 */
+    }
+  }

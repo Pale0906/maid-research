@@ -1,0 +1,103 @@
+/* ===============================
+   🧭 sidebar.css - 側邊欄樣式（整合漢堡功能）
+   =============================== */
+
+   .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--primary-color);
+    padding: 24px 16px;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    color: white;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%); /* 預設隱藏 */
+  }
+  
+  /* 大螢幕 ≥1775px 預設顯示 */
+  @media screen and (min-width: 1775px) {
+    .sidebar {
+      transform: translateX(0) !important;
+    }
+  }
+  
+  /* 顯示 sidebar（點擊漢堡選單） */
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  
+  @media screen and (max-width: 1023px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+  
+    .sidebar.active {
+      transform: translateX(0);
+    }
+  }
+  
+  .logo-area {
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .site-name-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.2s ease;
+  }
+  
+  .site-name-link:hover {
+    transform: scale(1.05);
+  }
+  
+  .site-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .logo-area img {
+    height: 60px;
+    display: block;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar nav li {
+    margin-bottom: 16px;
+  }
+  
+  .sidebar nav a {
+    display: block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+  }
+  
+  .sidebar nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .sidebar nav a.active {
+    background-color: rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+  }
+  

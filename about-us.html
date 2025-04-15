@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>關於我們 | 女僕研究所</title>
+
+  <!-- 固定結構樣式 -->
+  <link rel="stylesheet" href="/css/sidebar.css" />
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+
+  <!-- 主內容樣式 -->
+  <link rel="stylesheet" href="/css/content-layout.css" />
+  <link rel="stylesheet" href="/css/about.css" />
+
+  <!-- 底層通用樣式 -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <!-- 📱 漢堡選單 -->
+  <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+  <div id="nav-placeholder"></div>
+
+  <div class="page-wrapper">
+    <div id="header-placeholder"></div>
+  
+    <main class="about-container">
+      <!-- 1. 研究所介紹 -->
+      <section class="about-intro">
+        <h2><i class="fas fa-building-columns"></i> 關於女僕研究所</h2>
+        <p>女僕研究所致力整理、分析日系女僕咖啡廳文化，為大家提供最全面的資料與文化介紹。讓喜愛女僕主題的朋友能夠快速獲取資訊，也讓未曾體驗過的朋友了解女僕文化。</p>
+        <p>本研究所自 2022 年 3 月 13 日成立，持續更新內容與資料。</p>
+  
+        <h3><i class="fas fa-list-check"></i> 研究所曾經的工作</h3>
+        <ul class="contributions">
+          <li><i class="fas fa-mug-hot"></i> Cafe 資料列舉</li>
+          <li><i class="fas fa-map-marked-alt"></i> 女僕咖啡廳地圖（香港、澳門）</li>
+          <li><i class="fas fa-face-laugh-beam"></i> 女僕文化 memes</li>
+          <li><i class="fas fa-book-open"></i> 女僕文化字典</li>
+          <li><i class="fas fa-clipboard-question"></i> 女僕咖啡廳客人調查 2024・2025</li>
+        </ul>
+      </section>
+  
+      <!-- 2. 研究所成員 -->
+      <section class="about-members">
+        <h2><i class="fas fa-users"></i> 研究所成員</h2>
+        <div class="member-card">
+          <h4>所長</h4>
+          <p>所有內容暫由本人負責研究、撰文、設計與網站開發，致力推廣與保存女僕文化。</p>
+          <div class="member-socials"><a href="https://instagram.com/c.corax.a" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></div>
+        </div>
+      </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+  </div>
+
+  <!-- 共用組件載入 -->
+  <script>
+    fetch("/components/navigation.html").then(res => res.text()).then(data => {
+      const nav = document.createElement("div");
+      nav.innerHTML = data;
+      document.getElementById("nav-placeholder").replaceWith(...nav.childNodes);
+    });
+    fetch("/components/header.html").then(res => res.text()).then(data => {
+      document.getElementById("header-placeholder").innerHTML = data;
+    });
+    fetch("/components/footer.html").then(res => res.text()).then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+  </script>
+  <script src="/js/sidebar.js"></script>
+</body>
+</html>

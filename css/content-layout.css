@@ -1,0 +1,26 @@
+/* ===============================
+   📐 content-layout.css - 主內容排版樣式
+   =============================== */
+
+   :root {
+    --sidebar-width: 260px;
+  }
+  
+    /* ===============================
+     📐 主內容區域與結構
+     =============================== */
+  
+     .content-shift {
+        padding: 20px;
+        margin-left: 0;
+        box-sizing: border-box;
+        max-width: 100%;
+      }
+      
+      /* 1775px 以上自動留 sidebar 空間 */
+      @media screen and (min-width: 1775px) {
+        .content-shift {
+          margin-left: var(--sidebar-width);
+          max-width: calc(100% - var(--sidebar-width));
+        }
+      }

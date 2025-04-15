@@ -1,0 +1,23 @@
+/* ===============================
+   🦶 Footer 樣式
+   =============================== */
+
+   footer.site-footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  footer.site-footer a {
+    color: #ffffff;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+  }
+  
+  footer.site-footer a:hover {
+    color: var(--accent-color);
+  }
+  

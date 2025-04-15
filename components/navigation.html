@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="/css/sidebar.css" />
+
+<aside class="sidebar">
+  <!-- Logo + 名稱 -->
+  <div class="logo-area">
+    <a href="/" class="site-name-link">
+      <img src="/assets/images/logos/MRLogo.png" alt="女僕研究所 Logo" />
+      <span class="site-name">女僕研究所</span>
+    </a>
+  </div>
+
+  <!-- 導覽連結 -->
+  <nav aria-label="主導覽">
+    <ul>
+        <li><a href="/about-us.html">關於我們</a></li>
+        <li><a href="/regions/hongkong.html">香港女僕咖啡廳</a></li>
+        <li><a href="/regions/macau.html">澳門女僕咖啡廳</a></li>
+
+    </ul>
+  </nav>
+</aside>
+
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const links = document.querySelectorAll(".sidebar nav a");
+      const currentPath = window.location.pathname;
+  
+      links.forEach(link => {
+        if (link.getAttribute("href") === currentPath) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+  

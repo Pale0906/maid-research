@@ -1,0 +1,38 @@
+/* ===============================
+   🏷️ header.css - 橫額樣式模組
+   =============================== */
+
+   .banner {
+    width: 100%;
+    max-width: 1200px;
+    height: 200px;
+    margin: 0 auto 24px;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;     /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 16px;
+  }
+  
+  /* 📱 手機版橫額高度縮小 */
+  @media screen and (max-width: 768px) {
+    .banner {
+      height: 140px;
+      border-radius: 12px;
+    }
+  
+    .banner img {
+      border-radius: 12px;
+    }
+  }
+  

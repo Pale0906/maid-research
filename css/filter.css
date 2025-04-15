@@ -1,0 +1,201 @@
+/* ===============================  
+   🎛️ 篩選器樣式 - filter.css  
+   =============================== */
+
+/* 篩選標籤樣式 */
+.filter-tag {
+    display: inline-block;
+    padding: 8px 14px;
+    margin: 6px 8px 6px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--title-color);
+    background-color: #f0f4ff;
+    border: 1px solid #c5d9ff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+  }
+  
+  .filter-tag:hover {
+    background-color: #dce8ff;
+    border-color: var(--primary-color);
+  }
+  
+  .filter-tag.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 6px rgba(76, 148, 255, 0.3);
+  }
+  
+  /* ===============================  
+     篩選器開關按鈕 - filter-toggle  
+     =============================== */
+  .filter-toggle {
+    display: none;
+    margin-bottom: 16px;
+    padding: 10px 16px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+  }
+  
+  /* ===============================  
+     篩選器面板樣式 - filter-panel  
+     =============================== */
+  .filter-panel {
+    flex: 0 0 300px;
+    min-width: 300px;
+    max-width: 1024px;
+    background-color: #f8f9ff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 10;
+    transition: width 0.3s ease;
+  }
+  
+  .filter-group {
+    margin-bottom: 24px;
+  }
+  
+  .filter-group h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+  
+  .filter-group label {
+    display: block;
+    margin-bottom: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+  
+  .filter-group input[type="checkbox"] {
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  
+  .filter-group select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: #f9f9ff;
+  }
+  
+  .filter-group select:focus,
+  .filter-group input[type="checkbox"]:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+  
+  /* 重設按鈕樣式 */
+  .reset-btn {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    padding: 10px 16px;
+    background-color: #e0e0e0;
+    color: #333;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .reset-btn:hover {
+    background-color: #ccc;
+  }
+  
+  /* ===============================  
+     響應式樣式 - 手機與平板  
+     =============================== */
+  @media screen and (max-width: 1023px) {
+    .main-flex {
+      flex-direction: column;
+    }
+  
+    .filter-toggle {
+      display: block;
+    }
+  
+    .filter-panel {
+      width: 95%;
+      display: none;
+      position: relative;
+      margin-bottom: 16px;
+      padding: 16px;
+    }
+  
+    .filter-panel.active {
+      display: block;
+    }
+  
+    .cafe-list {
+      width: 100%;
+    }
+  
+    .filter-tag {
+      font-size: 0.95rem;
+      padding: 10px 16px;
+      margin: 4px 6px;
+    }
+    
+  }
+
+  /* ===============================
+   ⏰ 營業時間滑桿樣式
+   =============================== */
+
+.filter-time {
+    width: 100%;
+    appearance: none;
+    height: 6px;
+    background: #c5d9ff;
+    border-radius: 4px;
+    outline: none;
+    transition: background 0.3s ease;
+    margin-top: 6px;
+    margin-bottom: 10px;
+  }
+  
+  .filter-time::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  .filter-time::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+  }
+  
+  /* 滑桿下方文字（目前時間說明） */
+  .filter-time-label {
+    font-size: 0.9rem;
+    color: var(--title-color);
+    margin-bottom: 10px;
+  }
+  

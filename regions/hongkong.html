@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>香港女僕咖啡廳 | 女僕研究所</title>
+      
+         <!-- 固定結構模組 -->
+         <link rel="stylesheet" href="/css/sidebar.css" />
+         <link rel="stylesheet" href="/css/header.css" />
+         <link rel="stylesheet" href="/css/footer.css" />
+ 
+         <!-- 內容與功能模組 -->
+         <link rel="stylesheet" href="/css/filter.css" />
+         <link rel="stylesheet" href="/css/content-layout.css" />
+         <link rel="stylesheet" href="/css/cafe-card.css" />
+ 
+         <!-- 通用底層樣式 -->
+         <link rel="stylesheet" href="/css/style.css" />
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+      </head>      
+<body>
+      <!-- 📱 漢堡選單 -->
+  <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+
+  <!-- 側邊導覽列 -->
+  <div id="nav-placeholder"></div>
+      <!-- 橫額 -->
+      <div id="header-placeholder"></div>
+
+  <!-- 主內容容器 -->
+  <div class="content-shift">
+
+    <!-- 主區塊：左側為篩選器，右側為店鋪列表 -->
+    <div class="main-flex">
+        <!-- 顯示篩選器按鈕 -->
+        <button class="filter-toggle" onclick="toggleFilter()">顯示篩選器</button>
+
+<!-- 🎛️ 篩選器內容（可收合區塊） -->
+<section class="filter-panel" id="filter-panel">
+        <h2>篩選條件</h2>
+
+        <div class="filter-group">
+            <h3>主題</h3>
+            <button type="button" class="filter-tag filter-theme active" data-value="女僕主題">女僕主題</button>
+            <button type="button" class="filter-tag filter-theme active" data-value="其他主題">其他主題</button>
+            <button type="button" class="filter-tag filter-theme" data-value="相關地點">相關地點</button>
+          </div>
+
+          <div class="filter-group">
+            <h3>類型</h3>
+            <button type="button" class="filter-tag filter-type active" data-value="主食">主食</button>
+            <button type="button" class="filter-tag filter-type active" data-value="小食">小食</button>
+            <button type="button" class="filter-tag filter-type active" data-value="飲品">飲品</button>
+          </div>
+
+          <div class="filter-group">
+            <h3>營業日</h3>
+            <button type="button" class="filter-tag filter-day active" data-value="Mon">一</button>
+            <button type="button" class="filter-tag filter-day active" data-value="Tue">二</button>
+            <button type="button" class="filter-tag filter-day active" data-value="Wed">三</button>
+            <button type="button" class="filter-tag filter-day active" data-value="Thu">四</button>
+            <button type="button" class="filter-tag filter-day active" data-value="Fri">五</button>
+            <button type="button" class="filter-tag filter-day active" data-value="Sat">六</button>
+            <button type="button" class="filter-tag filter-day active" data-value="Sun">日</button>
+          </div>
+
+        <div class="filter-group">
+          <h3>營業時間</h3>
+          <input type="range" class="filter-time" min="12" max="28" value="20" step="0.5">
+          <div class="filter-time-label">顯示 20:00 有營業的店舖</div>
+        </div>
+
+        <div class="filter-group">
+          <h3>最低消費</h3>
+          <select class="filter-cost">
+            <option value="">不限</option>
+            <option value="100">$100 以下</option>
+            <option value="150">$150 以下</option>
+            <option value="200">$200 以下</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+            <h3>地區</h3>
+            <button type="button" class="filter-tag filter-area active" data-value="葵涌">葵涌</button>
+            <button type="button" class="filter-tag filter-area active" data-value="長沙灣">長沙灣</button>
+            <button type="button" class="filter-tag filter-area active" data-value="旺角">旺角</button>
+            <button type="button" class="filter-tag filter-area active" data-value="中環">中環</button>
+          </div>
+
+        <div class="filter-group">
+          <h3>營業狀態</h3>
+          <select class="filter-status">
+            <option value="open" selected>營業中</option>
+            <option value="closed">已結業</option>
+            <option value="all">全部</option>
+          </select>
+        </div>
+
+        <div class="result-count">目前符合條件的店舖：<span id="cafe-count">0</span> 間</div>
+        <button id="reset-filters" class="reset-btn">重設篩選條件</button>
+      </section>
+
+      <!-- 🏪 店鋪卡片列表 -->
+      <section class="cafe-list" id="cafe-list">
+
+        <!-- ✅ Maidjikku Choco Pinky 資料卡片 -->
+        <div class="cafe-card"
+        data-theme="女僕主題"
+        data-type="主食"
+        data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+        data-open="15.0"
+        data-close="23.0"
+        data-cost="100"
+        data-area="旺角"
+        data-status="open">
+      
+        <div class="cafe-image">
+          <img src="/assets/images/cafes/choco-pinky.jpg" alt="Maidjikku Choco Pinky 圖片">
+        </div>
+      
+        <h3 class="cafe-name">Maidjikku Choco Pinky</h3>
+      
+        <div class="cafe-tags">
+          <span class="tag theme">女僕主題</span>
+          <span class="tag type">提供主食</span>
+        </div>
+      
+        <p class="cafe-address">旺角彌敦道582-592號信和中心603室</p>
+        <p class="cafe-price">最低消費: $100 / 2 小時</p>
+      
+        <div class="cafe-socials">
+          <a href="https://www.instagram.com/maidjikku_chocopinky/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://www.facebook.com/maidjikkuchocopinky" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+        </div>
+      
+        <details class="cafe-hours">
+          <summary>營業時間</summary>
+          <ul>
+            <li>星期一：17:00–23:00</li>
+            <li>星期二：17:00–23:00</li>
+            <li>星期三：17:00–23:00</li>
+            <li>星期四：17:00–23:00</li>
+            <li>星期五：17:00–23:00</li>
+            <li>星期六：15:00–23:00</li>
+            <li>星期日：15:00–23:00</li>
+          </ul>
+        </details>
+      
+        <div class="cafe-note" style="display: none;">
+          <a href="/detail/choco-pinky.html">查看詳細介紹</a>
+        </div>
+      </div>
+      
+        <!-- Maidoll Mirage -->
+        <div class="cafe-card"
+        data-theme="女僕主題"
+        data-type="飲品"
+        data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+        data-open="14.0"
+        data-close="21.5"
+        data-cost="110"
+        data-area="旺角"
+        data-status="open">
+      
+        <div class="cafe-image">
+          <img src="/assets/images/cafes/maidoll-mirage.jpg" alt="Maidoll Mirage 圖片">
+        </div>
+      
+        <h3 class="cafe-name">Maidoll Mirage</h3>
+      
+        <div class="cafe-tags">
+          <span class="tag theme">女僕主題</span>
+          <span class="tag type">只有飲品</span>
+        </div>
+      
+        <p class="cafe-address">旺角黑布街96-102號威發大廈2B室</p>
+        <p class="cafe-price">最低消費: $110 / 小時</p>
+      
+        <div class="cafe-socials">
+          <a href="https://www.instagram.com/maidollmirage/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://www.facebook.com/maidollmirage" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+        </div>
+      
+        <details class="cafe-hours">
+          <summary>營業時間</summary>
+          <ul>
+            <li>星期一：17:00–21:30</li>
+            <li>星期二：17:00–21:30</li>
+            <li>星期三：17:00–21:30</li>
+            <li>星期四：17:00–21:30</li>
+            <li>星期五：17:00–21:30</li>
+            <li>星期六：14:00–21:30</li>
+            <li>星期日：14:00–21:30</li>
+            <li>公眾假期：14:00–21:30</li>
+          </ul>
+        </details>
+      
+        <div class="cafe-note" style="display: none;">
+          <a href="/detail/maidoll-mirage.html">查看詳細介紹</a>
+        </div>
+      </div>
+
+        <!-- Sugar Factory Cafe 糖果工房 -->
+        <div class="cafe-card"
+        data-theme="女僕主題"
+        data-type="主食"
+        data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+        data-open="13.0"
+        data-close="22.0"
+        data-cost="60"
+        data-area="旺角"
+        data-status="open">
+      
+        <div class="cafe-image">
+          <img src="/assets/images/cafes/sugar-factory.jpg" alt="Sugar Factory Cafe 圖片">
+        </div>
+      
+        <h3 class="cafe-name">Sugar Factory Cafe 糖果工房</h3>
+      
+        <div class="cafe-tags">
+          <span class="tag theme">女僕主題</span>
+          <span class="tag type">提供主食</span>
+        </div>
+      
+        <p class="cafe-address">旺角登打士街36號恆威商業中心13樓</p>
+        <p class="cafe-price">最低消費: $60 / 90 分鐘</p>
+      
+        <div class="cafe-socials">
+          <a href="https://www.instagram.com/sugarfactorycafe/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://www.facebook.com/sugarfactorycafe" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+        </div>
+        <div class="cafe-socials">
+          <a href="https://x.com/Sugar_factory" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+          <a href="https://www.sugarfactorycafe.com/" target="_blank"><i class="fas fa-globe"></i> 官方網站</a>
+        </div>
+      
+        <details class="cafe-hours">
+          <summary>營業時間</summary>
+          <ul>
+            <li>星期一：13:00–22:00</li>
+            <li>星期二：13:00–22:00</li>
+            <li>星期三：13:00–22:00</li>
+            <li>星期四：13:00–22:00</li>
+            <li>星期五：13:00–22:00</li>
+            <li>星期六：13:00–22:00</li>
+            <li>星期日：13:00–22:00</li>
+          </ul>
+        </details>
+      
+        <div class="cafe-note" style="display: none;">
+          <a href="/detail/sugar-factory.html">查看詳細介紹</a>
+        </div>
+      </div>
+
+        <!-- Dreamy Home -->
+        <div class="cafe-card"
+        data-theme="女僕主題"
+        data-type="主食"
+        data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+        data-open="14.0"
+        data-close="22.0"
+        data-cost="9999"
+        data-area="旺角"
+        data-status="open">
+      
+        <div class="cafe-image">
+          <img src="/assets/images/cafes/dreamy-home.jpg" alt="Dreamy Home 圖片">
+        </div>
+      
+        <h3 class="cafe-name">Dreamy Home</h3>
+      
+        <div class="cafe-tags">
+          <span class="tag theme">女僕主題</span>
+          <span class="tag type">提供主食</span>
+        </div>
+      
+        <p class="cafe-address">旺角登打士街44號恆隆大廈7樓44室</p>
+        <p class="cafe-price">請向店舖查詢</p>
+      
+        <div class="cafe-socials">
+          <a href="https://www.instagram.com/dreamyhomecafe/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="https://www.facebook.com/DreamyHomeCafe/" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+        </div>
+      
+        <details class="cafe-hours">
+          <summary>營業時間</summary>
+          <ul>
+            <li>星期一：18:00–22:00</li>
+            <li>星期二：18:00–22:00</li>
+            <li>星期三：18:00–22:00</li>
+            <li>星期四：18:00–22:00</li>
+            <li>星期五：18:00–22:00</li>
+            <li>星期六：14:00–22:00</li>
+            <li>星期日：14:00–22:00</li>
+            <li>公眾假期：14:00–22:00</li>
+          </ul>
+        </details>
+      
+        <div class="cafe-note" style="display: none;">
+          <a href="/detail/dreamy-home.html">查看詳細介紹</a>
+        </div>
+      </div>
+      
+<!-- The Manor Cafe -->
+<div class="cafe-card"
+  data-theme="女僕主題"
+  data-type="主食"
+  data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="17.0"
+  data-close="22.0"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（請確認圖檔路徑） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/the-manor-cafe.jpg" alt="The Manor Cafe 圖片">
+  </div>
+
+  <h3 class="cafe-name">The Manor Cafe</h3>
+
+  <!-- 🏷️ 標籤 -->
+  <div class="cafe-tags">
+    <span class="tag theme">女僕主題</span>
+    <span class="tag type">提供主食</span>
+  </div>
+
+  <p class="cafe-address">旺角西洋菜南街聯興大廈11樓88室</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <!-- 📱 社交媒體 -->
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/themanorcafe/" target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <a href="https://www.facebook.com/themanorcafehk/" target="_blank" title="Facebook">
+      <i class="fab fa-facebook"></i> Facebook
+    </a>
+  </div>
+
+  <!-- ⏰ 營業時間 -->
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：17:00–22:00</li>
+      <li>星期二：17:00–22:00</li>
+      <li>星期三：17:00–22:00</li>
+      <li>星期四：17:00–22:00</li>
+      <li>星期五：17:00–22:00</li>
+      <li>星期六：17:00–22:00</li>
+      <li>星期日：17:00–22:00</li>
+      <li>公眾假期：17:00–22:00</li>
+    </ul>
+  </details>
+
+  <!-- 📌 備註連結（預留詳細介紹） -->
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/the-manor-cafe.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- Maid Planet -->
+<div class="cafe-card"
+  data-theme="女僕主題"
+  data-type="主食"
+  data-days="Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="15.0"
+  data-close="22.0"
+  data-cost="99"
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（請確認檔名） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/maid-planet.jpg" alt="Maid Planet 圖片">
+  </div>
+
+  <h3 class="cafe-name">Maid Planet</h3>
+
+  <!-- 🏷️ 標籤 -->
+  <div class="cafe-tags">
+    <span class="tag theme">女僕主題</span>
+    <span class="tag type">提供主食</span>
+  </div>
+
+  <p class="cafe-address">旺角豉油街24-26號福泰大廈11樓</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <!-- 📱 社交媒體 -->
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/cafemaidplanet/" target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <a href="https://www.facebook.com/cafemaidplanet" target="_blank" title="Facebook">
+      <i class="fab fa-facebook"></i> Facebook
+    </a>
+  </div>
+
+  <!-- ⏰ 營業時間 -->
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：休息</li>
+      <li>星期二：15:00–22:00</li>
+      <li>星期三：15:00–22:00</li>
+      <li>星期四：15:00–22:00</li>
+      <li>星期五：15:00–22:00</li>
+      <li>星期六：15:00–22:00</li>
+      <li>星期日：15:00–22:00</li>
+      <li>公眾假期：15:00–22:00</li>
+    </ul>
+  </details>
+
+  <!-- 📝 備註（預留詳細介紹） -->
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/maid-planet.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- The Bare Bones Cafe : Cure Maid -->
+<div class="cafe-card"
+  data-theme="女僕主題"
+  data-type="主食"
+  data-days="Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="14.0"
+  data-close="22.5"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（請確認圖檔命名） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/thebarebones.jpg" alt="The Bare Bones Cafe 圖片">
+  </div>
+
+  <h3 class="cafe-name">The Bare Bones Cafe : Cure Maid</h3>
+
+  <!-- 🏷️ 標籤 -->
+  <div class="cafe-tags">
+    <span class="tag theme">女僕主題</span>
+    <span class="tag type">提供主食</span>
+  </div>
+  <p class="cafe-address">油麻地彌敦道570-572號基利商業大廈2樓02室</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <!-- 📱 社交媒體 -->
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/maidcafe_thebarebones/" target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <a href="https://www.facebook.com/TBBHKcafe" target="_blank" title="Facebook">
+      <i class="fab fa-facebook"></i> Facebook
+    </a>
+  </div>
+
+  <!-- ⏰ 營業時間 -->
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：休息</li>
+      <li>星期二：16:00–22:30</li>
+      <li>星期三：16:00–22:30</li>
+      <li>星期四：16:00–22:30</li>
+      <li>星期五：16:00–22:30</li>
+      <li>星期六：14:00–22:30</li>
+      <li>星期日：14:00–22:30</li>
+    </ul>
+  </details>
+
+  <!-- 📝 備註 -->
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/thebarebones.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- Comma Cafe 逗號咖啡廳 -->
+<div class="cafe-card"
+  data-theme="女僕主題"
+  data-type="主食"
+  data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="15.0"
+  data-close="22.0"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（如有可更新路徑） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/comma-cafe.jpg" alt="Comma Cafe 逗號咖啡廳 圖片">
+  </div>
+
+  <!-- 名稱 -->
+  <h3 class="cafe-name">Comma Cafe 逗號咖啡廳</h3>
+
+  <!-- 標籤 -->
+  <div class="cafe-tags">
+    <span class="tag theme">女僕主題</span>
+    <span class="tag type">提供主食</span>
+  </div>
+
+  <!-- 地址 -->
+  <p class="cafe-address">旺角登打士街36號恆威大廈14樓</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <!-- 社交媒體 -->
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/commacafe_14/" target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100063858405447" target="_blank" title="Facebook">
+      <i class="fab fa-facebook"></i> Facebook
+    </a>
+  </div>
+
+  <!-- 營業時間 -->
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：15:00–22:00</li>
+      <li>星期二：15:00–22:00</li>
+      <li>星期三：15:00–22:00</li>
+      <li>星期四：15:00–22:00</li>
+      <li>星期五：15:00–22:00</li>
+      <li>星期六：15:00–22:00</li>
+      <li>星期日：15:00–22:00</li>
+    </ul>
+  </details>
+
+  <!-- 備註（預留詳細介紹） -->
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/comma-cafe.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- Dear.Devil -->
+<div class="cafe-card"
+  data-theme="女僕主題"
+  data-type="主食"
+  data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="15.0"
+  data-close="22.0"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（如有圖可補） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/deardevil.jpg" alt="Dear.Devil 圖片">
+  </div>
+
+  <h3 class="cafe-name">Dear.Devil</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">女僕主題</span>
+    <span class="tag type">提供主食</span>
+  </div>
+
+  <p class="cafe-address">旺角彌敦道646號陶德大廈3樓</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/deardevil_maid.butler" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/profile.php?id=100063858405447" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：17:00–22:00</li>
+      <li>星期二：17:00–22:00</li>
+      <li>星期三：17:00–22:00</li>
+      <li>星期四：17:00–22:00</li>
+      <li>星期五：17:00–22:00</li>
+      <li>星期六：15:00–22:00</li>
+      <li>星期日：15:00–22:00</li>
+      <li>公眾假期：15:00–22:00</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/deardevil.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- Maid Academy -->
+<div class="cafe-card"
+  data-theme="女僕主題"
+  data-type="飲品"
+  data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="17.0"
+  data-close="22.0"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（預留） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/maid-academy.jpg" alt="Maid Academy 圖片">
+  </div>
+
+  <h3 class="cafe-name">Maid Academy</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">女僕主題</span>
+    <span class="tag type">只有飲品</span>
+  </div>
+
+  <p class="cafe-address">旺角通菜街8號1樓</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/maid_academy/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/MaidHKacademy" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：17:00–22:00</li>
+      <li>星期二：17:00–22:00</li>
+      <li>星期三：17:00–22:00</li>
+      <li>星期四：17:00–22:00</li>
+      <li>星期五：17:00–22:00</li>
+      <li>星期六：17:00–22:00</li>
+      <li>星期日：17:00–22:00</li>
+      <li>公眾假期：17:00–22:00</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/maid-academy.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- FairyBliss -->
+<div class="cafe-card"
+  data-theme="其他主題"
+  data-type="主食"
+  data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="14.0"
+  data-close="22.0"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（預留） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/fairy-bliss.jpg" alt="FairyBliss 圖片">
+  </div>
+
+  <h3 class="cafe-name">FairyBliss</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">妖精主題</span>
+    <span class="tag type">提供主食</span>
+  </div>
+
+  <p class="cafe-address">油麻地彌敦道525-543號寶寧大廈A座10樓1003室</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/fairyblisscafe/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/fairyblisscafe" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：16:00–22:00</li>
+      <li>星期二：16:00–22:00</li>
+      <li>星期三：休息</li>
+      <li>星期四：休息</li>
+      <li>星期五：16:00–22:00</li>
+      <li>星期六：14:00–22:00</li>
+      <li>星期日：14:00–22:00</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/fairy-bliss.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- Fantasia -->
+<div class="cafe-card"
+  data-theme="其他主題"
+  data-type="主食"
+  data-days="Mon,Tue,Thu,Fri,Sat,Sun"
+  data-open="15.0"
+  data-close="22.0"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（預留） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/fantansia.jpg" alt="Fantasia 圖片">
+  </div>
+
+  <h3 class="cafe-name">Fantasia Cafe</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">遊戲主題</span>
+    <span class="tag type">提供主食</span>
+  </div>
+
+  <p class="cafe-address">旺角通菜街75號1樓</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/fantasiacafe2023/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/Fantasiacafe2023" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：16:00–22:00</li>
+      <li>星期二：16:00–22:00</li>
+      <li>星期三：休息</li>
+      <li>星期四：16:00–22:00</li>
+      <li>星期五：16:00–22:00</li>
+      <li>星期六：15:00–22:00</li>
+      <li>星期日：15:00–22:00</li>
+	  <li>公眾假期：15:00–22:00</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/fantansia.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- MuChuu -->
+<div class="cafe-card"
+  data-theme="女僕主題"
+  data-type="飲品"
+  data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="16.0"
+  data-close="23.0"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（預留） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/muchuu.jpg" alt="MuChuu 圖片">
+  </div>
+
+  <h3 class="cafe-name">MuChuu 夢中</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">女僕主題</span>
+    <span class="tag type">只有飲品</span>
+  </div>
+
+  <p class="cafe-address">旺角彌敦道僑建大廈2樓 566A室</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/maid.muchuu/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/muchuucafe" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：17:00–23:00</li>
+      <li>星期二：17:00–23:00</li>
+      <li>星期三：17:00–23:00</li>
+      <li>星期四：17:00–23:00</li>
+      <li>星期五：17:00–23:00</li>
+      <li>星期六：16:00–23:00</li>
+      <li>星期日：16:00–23:00</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/muchuu.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- The Misty -->
+<div class="cafe-card"
+  data-theme="女僕主題"
+  data-type="主食"
+  data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="14.0"
+  data-close="22.0"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（預留） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/misty.jpg" alt="The Misty 圖片">
+  </div>
+
+  <h3 class="cafe-name">The Misty</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">女僕主題</span>
+    <span class="tag type">提供主食</span>
+  </div>
+
+  <p class="cafe-address">旺角百寶利商業中心14樓06室</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/maidcafe.misty/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/profile.php?id=61552810560701" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：17:00–22:00</li>
+      <li>星期二：17:00–22:00</li>
+      <li>星期三：17:00–22:00</li>
+      <li>星期四：17:00–22:00</li>
+      <li>星期五：17:00–22:00</li>
+      <li>星期六：14:00–22:00</li>
+      <li>星期日：14:00–22:00</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/misty.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- Maid Clinic -->
+<div class="cafe-card"
+  data-theme="其他主題"
+  data-type="主食"
+  data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="15.0"
+  data-close="22.0"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（預留） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/maid-clinic.jpg" alt="Maid Clinic 圖片">
+  </div>
+
+  <h3 class="cafe-name">Maid Clinic</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">護士主題</span>
+    <span class="tag type">提供主食</span>
+  </div>
+
+  <p class="cafe-address">旺角西洋菜南街聯興大廈10樓88號</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/maid.clinic/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/profile.php?id=61554263690034" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：17:00–22:00</li>
+      <li>星期二：17:00–22:00</li>
+      <li>星期三：17:00–22:00</li>
+      <li>星期四：17:00–22:00</li>
+      <li>星期五：17:00–22:00</li>
+      <li>星期六：15:00–22:00</li>
+      <li>星期日：15:00–22:00</li>
+	  <li>公眾假期：15:00–22:00</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/maid-clinic.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- Queen’s Garden -->
+<div class="cafe-card"
+  data-theme="其他主題"
+  data-type="小食"
+  data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="17.0"
+  data-close="23.0"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（預留） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/queens-garden.jpg" alt="Queen’s Garden 圖片">
+  </div>
+
+  <h3 class="cafe-name">Queen’s Garden</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">Lolita服飾主題</span>
+    <span class="tag type">簡單輕食</span>
+  </div>
+
+  <p class="cafe-address">旺角西洋菜街遠景大廈3樓H2室</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/queens_x_garden/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/profile.php?id=100094303495128" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：17:00(18:00)–22:00(23:00)</li>
+      <li>星期二：17:00(18:00)–22:00(23:00)</li>
+      <li>星期三：17:00(18:00)–22:00(23:00)</li>
+      <li>星期四：17:00(18:00)–22:00(23:00)</li>
+      <li>星期五：17:00(18:00)–22:00(23:00)</li>
+      <li>星期六：17:00(18:00)–22:00(23:00)</li>
+      <li>星期日：17:00(18:00)–22:00(23:00)</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/queens-garden.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- Steamy Manor -->
+<div class="cafe-card"
+  data-theme="女僕主題"
+  data-type="主食"
+  data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="12.0"
+  data-close="22.0"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（預留） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/steamy-manor.jpg" alt="Steamy Manor 圖片">
+  </div>
+
+  <h3 class="cafe-name">Steamy Manor</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">女僕主題</span>
+    <span class="tag type">提供主食</span>
+  </div>
+
+  <p class="cafe-address">香港九龍旺角彌敦道726號7樓全層</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/steamy_manor/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/profile.php?id=61553153079532" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：12:00–22:00</li>
+      <li>星期二：12:00–22:00</li>
+      <li>星期三：12:00–22:00</li>
+      <li>星期四：12:00–22:00</li>
+      <li>星期五：12:00–22:00</li>
+      <li>星期六：12:00–22:00</li>
+      <li>星期日：12:00–22:00</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/steamy-manor.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- Fluffy Maid -->
+<div class="cafe-card"
+  data-theme="女僕主題"
+  data-type="主食"
+  data-days="Fri,Sat,Sun"
+  data-open="17.0"
+  data-close="23.0"
+  data-cost=""
+  data-area="長沙灣"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（預留） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/fluffy.jpg" alt="Fluffy Maid 圖片">
+  </div>
+
+  <h3 class="cafe-name">Fluffy Maid</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">女僕主題</span>
+    <span class="tag type">提供主食</span>
+  </div>
+
+  <p class="cafe-address">長沙灣青山道688-690號嘉名工廠大廈E座6樓</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/fluffymaidhk/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/profile.php?id=61557221254974" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：休息</li>
+      <li>星期二：休息</li>
+      <li>星期三：休息</li>
+      <li>星期四：休息</li>
+      <li>星期五：17:00–23:00</li>
+      <li>星期六：17:00–23:00</li>
+      <li>星期日：17:00–23:00</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/fluffy maid.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- Majo Board Game -->
+<div class="cafe-card"
+  data-theme="其他主題"
+  data-type="飲品"
+  data-days="Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="15.0"
+  data-close="22.0"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（預留） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/majo-board-game.jpg" alt="魔女桌遊圖片">
+  </div>
+
+  <h3 class="cafe-name">魔女桌遊 Majo Board Game</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">魔女主題</span>
+    <span class="tag type">只有飲品</span>
+  </div>
+
+  <p class="cafe-address">旺角通菜街61號德發大廈2樓01室</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/majoboardgame/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/profile.php?id=61557224692725" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：休息</li>
+      <li>星期二：17:00–22:00</li>
+      <li>星期三：17:00–22:00</li>
+      <li>星期四：17:00–22:00</li>
+      <li>星期五：17:00–22:00</li>
+      <li>星期六：15:00–22:00</li>
+      <li>星期日：15:00–22:00</li>
+	  <li>公眾假期：15:00–22:00</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/majo-board-game.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- Kitty Maid -->
+<div class="cafe-card"
+  data-theme="女僕主題"
+  data-type="小食"
+  data-days="Thu,Fri,Sat,Sun"
+  data-open="17.0"
+  data-close="22.0"
+  data-cost=""
+  data-area="葵涌"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（預留） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/kitty-maid.jpg" alt="Kitty Maid圖片">
+  </div>
+
+  <h3 class="cafe-name">Kitty Maid</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">女僕主題</span>
+    <span class="tag type">簡單輕食</span>
+  </div>
+
+  <p class="cafe-address">葵涌工業街17號3樓A室</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/kitty.maid0/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：休息</li>
+      <li>星期二：休息</li>
+      <li>星期三：休息</li>
+      <li>星期四：17:00–22:00</li>
+      <li>星期五：17:00–22:00</li>
+      <li>星期六：17:00–22:00</li>
+      <li>星期日：17:00–22:00</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/kitty-maid.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- Maid Jinja -->
+<div class="cafe-card"
+  data-theme="其他主題"
+  data-type="主食"
+  data-days="Mon,Tue,Wed,Thu,Fri,Sat,Sun"
+  data-open="17.0"
+  data-close="22.0"
+  data-cost=""
+  data-area="旺角"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（預留） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/maid-jinja.jpg" alt="Maid Jinja圖片">
+  </div>
+
+  <h3 class="cafe-name">Maid Jinja</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">神社主題</span>
+    <span class="tag type">提供主食</span>
+  </div>
+
+  <p class="cafe-address">旺角百寶利商業中心9樓02室</p>
+
+  <p class="cafe-price">最低消費: $?? / ??? 分鐘</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/maid.jinja.cafe/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/maidjinjacafe" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：17:00–22:00</li>
+      <li>星期二：17:00–22:00</li>
+      <li>星期三：17:00–22:00</li>
+      <li>星期四：17:00–22:00</li>
+      <li>星期五：17:00–22:00</li>
+      <li>星期六：15:00–22:00</li>
+      <li>星期日：15:00–22:00</li>
+	  <li>公眾假期：15:00–22:00</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/maid-jinja.html">查看詳細介紹</a>
+  </div>
+</div>
+
+
+      </section>
+    </div> <!-- /main-flex -->
+  </div> <!-- /content-shift -->
+
+  <!-- 頁尾 -->
+  <div id="footer-placeholder"></div>
+
+<!-- 載入共用組件 -->
+<script>
+    fetch("/components/navigation.html").then(res => res.text()).then(data => {
+      const nav = document.createElement("div");
+      nav.innerHTML = data;
+      document.getElementById("nav-placeholder").replaceWith(...nav.childNodes);
+    });
+  
+    fetch("/components/header.html").then(res => res.text()).then(data => {
+      document.getElementById("header-placeholder").innerHTML = data;
+    });
+  
+    fetch("/components/footer.html").then(res => res.text()).then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+  </script>
+  
+  <!-- 模組化 JS -->
+  <script src="/js/slideshow.js"></script>
+  <script src="/js/sidebar.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/filter.js"></script>
+</body>
+</html>

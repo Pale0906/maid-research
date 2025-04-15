@@ -1,0 +1,199 @@
+/* ===============================
+   🌐 全站配色變數
+   =============================== */
+   :root {
+    --bg-color: #dddfff;
+    --primary-color: #4C94FF;
+    --accent-color: #FF5C8A;
+    --title-color: #222222;
+    --card-border-color: #d9e8ff;
+    --logo-area-color: #3A7BD5;
+    --sidebar-width: 280px;
+  }
+  
+  /* ===============================
+     🔤 字體與基本樣式
+     =============================== */
+  body {
+    margin: 0;
+    background: linear-gradient(to bottom right, var(--bg-color), #f6f8ff);
+    font-family: "Noto Sans TC", sans-serif;
+    color: var(--title-color);
+  }
+  
+  /* ===============================
+     📱 漢堡按鈕
+     =============================== */
+  .hamburger-btn {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1101;
+    background-color: #333;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  .hamburger-btn:hover {
+    background-color: #555;
+  }
+  
+  /* ===============================
+     🧱 主內容結構與內容排版
+     =============================== */
+  main {
+    padding: 20px;
+  }
+  .content-shift {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 16px;
+  }
+  .main-flex {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  
+  /* ===============================
+     📱 精華按鈕區
+     =============================== */
+  .featured-buttons {
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  }
+  .feature-card {
+    width: 140px;
+    height: 140px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px var(--card-border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .feature-card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 12px #ff5c8a80;
+    background-color: var(--accent-color);
+  }
+  .feature-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    object-fit: cover;
+  }
+  
+  /* ===============================
+     🎞️ 幻燈片區塊
+     =============================== */
+  .slideshow-container {
+    position: relative;
+    max-width: 100%;
+    padding: 20px 0;
+    margin-top: 20px;
+  }
+  .slide {
+    position: relative;
+    display: none;
+    text-align: center;
+  }
+  .slide-caption {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    max-width: 90%;
+  }
+  .slide img {
+    width: 90%;
+    max-width: 1000px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .fade {
+    animation: fade 1.5s ease-in-out;
+  }
+  @keyframes fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+  }
+  
+  /* ===============================
+     🧾 頁尾樣式
+     =============================== */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    margin-top: 40px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .content-shift,
+    .main-flex,
+    .slideshow-container,
+    .featured-buttons,
+    .main-content {
+      padding-right: 24px;
+      box-sizing: border-box;
+    }
+  }
+
+  @media screen and (max-width: 1775px) and (min-width: 1024px) {
+    .hamburger-btn {
+      display: block; /* 在1024px到1775px之間顯示漢堡按鈕 */
+    }
+  }
+  
+  /* 📱 響應式調整 */
+  @media screen and (max-width: 1023px) {
+    .hamburger-btn {
+        display: block; /* 手機版也顯示漢堡按鈕 */
+      }
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    .sidebar.active {
+      transform: translateX(0);
+    }
+    .content-shift,
+    .main-flex,
+    .slideshow-container,
+    .featured-buttons,
+    .main-content {
+      padding-left: 16px;
+      padding-right: 16px;
+      margin-left: 0;
+    }
+    .banner {
+      height: 140px;
+    }
+  }
+  
+  /* 其他模組樣式請分散在個別檔案如 filter.css、header.css 等 */
+  
+  
