@@ -1,0 +1,41 @@
+/* ===============================
+   📬 contact.css - 聯絡我們頁面樣式
+   =============================== */
+
+   .page-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-color);
+  }
+  
+  .form-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* 說明文字排版 */
+  main p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    color: #444;
+  }
+  
+  /* 響應式表單寬度調整 */
+  @media screen and (max-width: 768px) {
+    .form-wrapper {
+      padding: 0 10px;
+    }
+  
+    .page-title {
+      font-size: 1.5rem;
+    }
+  }
+  

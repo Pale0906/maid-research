@@ -30,6 +30,12 @@
     box-shadow: 0 2px 6px rgba(76, 148, 255, 0.3);
   }
   
+  .filter-tip {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    margin-top: 8px;
+  }
+  
   /* ===============================  
      篩選器開關按鈕 - filter-toggle  
      =============================== */
@@ -199,3 +205,15 @@
     margin-bottom: 10px;
   }
   
+  .filter-time-ticks {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 4px;
+    padding: 0 2px;
+  }
+  
+  .filter-time-ticks span {
+    white-space: nowrap;
+  }

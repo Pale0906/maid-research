@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>關於我們 | 女僕研究所</title>
+
+  <!-- 固定結構樣式 -->
+  <link rel="stylesheet" href="/css/sidebar.css" />
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+
+  <!-- 主內容樣式 -->
+  <link rel="stylesheet" href="/css/content-layout.css" />
+  <link rel="stylesheet" href="/css/about.css" />
+
+  <!-- 底層通用樣式 -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <!-- 📱 漢堡選單 -->
+  <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+  <div id="nav-placeholder"></div>
+
+  <div class="page-wrapper">
+    <div id="header-placeholder"></div>
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">首頁</a>
+      <span>›</span>
+      <span class="current">關於我們</a>
+    </nav>
+
+    <div class="about-container">
+      <section class="about-section">
+        <h2><i class="fas fa-info-circle"></i> 研究所介紹</h2>
+        <p>
+          女僕研究所致力整理、分析日系女僕咖啡廳文化，為大家提供最全面的資料以及文化介紹，不但令各位喜愛女僕主題的朋友提供最快捷的資料，亦讓未去過女僕咖啡廳的朋友也可以明白女僕文化。
+        </p>
+        <p>本研究所創立於 2022 年 3 月 13 日。</p>
+    
+        <h3><i class="fas fa-list-ul"></i> 我們目前整理的內容</h3>
+        <ul class="about-list">
+          <li><i class="fas fa-store"></i> 各地女僕咖啡廳資訊</li>
+          <li><i class="fas fa-book-open"></i> 女僕文化 memes</li>
+          <li><i class="fas fa-language"></i> 女僕文化字典</li>
+          <li><i class="fas fa-chart-bar"></i> 女僕咖啡廳客人調查 2024、2025</li>
+        </ul>
+    
+        <h3><i class="fas fa-link"></i> 官方社群</h3>
+        <div class="about-buttons">
+          <a href="https://www.instagram.com/maid_research/" target="_blank" class="social-btn">
+            <i class="fab fa-instagram"></i> @maid_research
+          </a>
+          <a href="https://www.facebook.com/MaidResearcher" target="_blank" class="social-btn">
+            <i class="fab fa-facebook"></i> MaidResearcher
+          </a>
+        </div>
+      </section>
+    
+      <section class="about-section">
+        <h2><i class="fas fa-user"></i> 研究所成員</h2>
+        
+        <div class="member-card-container">
+          <details class="member-card">
+            <summary><i class="fas fa-chess-king"></i> 所長</summary>
+            <p>我是本站創辦者與唯一成員，負責所有網站內容、設計與資料彙整。</p>
+            <p>我想讓更多人理解女僕咖啡廳是什麼的地方，同時想正確地分析什麼才是女僕咖啡廳。</p>
+      
+            <div class="member-socials">
+              <a href="https://www.instagram.com/c.corax.a/" target="_blank" class="social-btn">
+                <i class="fab fa-instagram"></i> @c.corax.a
+              </a>
+            </div>
+          </details>
+        </div>
+        
+      </section>
+    </div>
+    
+  <!-- 頁尾 -->
+  <div id="footer-placeholder"></div>
+  <!-- 共用組件載入 -->
+  <script>
+    fetch("/components/navigation.html").then(res => res.text()).then(data => {
+      const nav = document.createElement("div");
+      nav.innerHTML = data;
+      document.getElementById("nav-placeholder").replaceWith(...nav.childNodes);
+    });
+    fetch("/components/header.html").then(res => res.text()).then(data => {
+      document.getElementById("header-placeholder").innerHTML = data;
+    });
+    fetch("/components/footer.html").then(res => res.text()).then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+  </script>
+
+  <script src="/js/sidebar.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

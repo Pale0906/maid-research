@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="/css/sidebar.css" />
+<!-- ✅ Font Awesome CDN（如未載入可加在主頁 head） -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-<aside class="sidebar">
-  <!-- Logo + 名稱 -->
+<aside class="sidebar" id="sidebar">
+  <!-- 🪧 Logo + 名稱 -->
   <div class="logo-area">
     <a href="/" class="site-name-link">
       <img src="/assets/images/logos/MRLogo.png" alt="女僕研究所 Logo" />
@@ -9,27 +11,55 @@
     </a>
   </div>
 
-  <!-- 導覽連結 -->
-  <nav aria-label="主導覽">
-    <ul>
-        <li><a href="/about-us.html">關於我們</a></li>
+  <nav class="sidebar-nav">
+    
+    <!-- 主頁 -->
+    <ul class="sidebar-links">
+      <li><a href="/index.html"><i class="fas fa-home"></i> 主頁 </a></li>
+    </ul>
+
+    <!-- 👤 關於我們 -->
+    <ul class="sidebar-links">
+      <li><a href="/pages/about-us.html"><i class="fas fa-user-circle"></i> 關於我們</a></li>
+    </ul>
+
+        <!-- 📚 文化內容 -->
+        <details class="sidebar-section">
+          <summary><i class="fas fa-book"></i> 女僕文化</summary>
+          <ul>
+            <li><a href="/pages/culture/intro.html">文化介紹</a></li>
+                <!---<li><a href="/pages/culture/dictionary.html">女僕字典</a></li>
+            <li><a href="/pages/culture/memes.html">女僕 Memes</a></li>
+            <li><a href="/pages/culture/survey.html">調查報告</a></li>-->
+          </ul>
+        </details>
+
+    <!-- 🗺️ 地區導覽 -->
+    <details class="sidebar-section">
+      <summary><i class="fas fa-map-marker-alt"></i> 地區導覽</summary>
+      <ul>
         <li><a href="/regions/hongkong.html">香港女僕咖啡廳</a></li>
         <li><a href="/regions/macau.html">澳門女僕咖啡廳</a></li>
+      </ul>
+    </details>
 
+    <!-- ✉️ 聯絡我們 -->
+    <ul class="sidebar-links">
+      <li><a href="/pages/contact.html"><i class="fas fa-envelope"></i> 聯絡我們</a></li>
     </ul>
   </nav>
 </aside>
 
 <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const links = document.querySelectorAll(".sidebar nav a");
-      const currentPath = window.location.pathname;
-  
-      links.forEach(link => {
-        if (link.getAttribute("href") === currentPath) {
-          link.classList.add("active");
-        }
-      });
+  window.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(".sidebar a");
+    const currentPath = window.location.pathname;
+
+    links.forEach(link => {
+      if (link.getAttribute("href") === currentPath) {
+        link.classList.add("active");
+      }
     });
-  </script>
+  });
   
+</script>

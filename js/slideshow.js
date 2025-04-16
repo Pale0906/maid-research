@@ -2,20 +2,43 @@
 // 🎞️ 幻燈片輪播
 // ===============================
 let slideIndex = 0;
-function showSlides() {
+let slideTimer;
+
+function showSlidesManual(n) {
   const slides = document.getElementsByClassName("slide");
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+  if (n >= slides.length) slideIndex = 0;
+  if (n < 0) slideIndex = slides.length - 1;
+
+  for (let slide of slides) {
+    slide.style.display = "none";
   }
-  slideIndex++;
-  if (slideIndex > slides.length) {
-    slideIndex = 1;
-  }
-  if (slides[slideIndex - 1]) {
-    slides[slideIndex - 1].style.display = "block";
-  }
-  setTimeout(showSlides, 4000);
+
+  slides[slideIndex].style.display = "block";
 }
-document.addEventListener("DOMContentLoaded", showSlides);
 
+// ⏩ 自動播放
+function autoSlides() {
+  const slides = document.getElementsByClassName("slide");
+  for (let slide of slides) {
+    slide.style.display = "none";
+  }
 
+  slideIndex++;
+  if (slideIndex >= slides.length) slideIndex = 0;
+  slides[slideIndex].style.display = "block";
+
+  slideTimer = setTimeout(autoSlides, 8000);
+}
+
+// ➕ 按下左右切換
+function plusSlides(n) {
+  clearTimeout(slideTimer); // 停止自動輪播
+  slideIndex += n;
+  showSlidesManual(slideIndex);
+  slideTimer = setTimeout(autoSlides, 8000); // 重新啟動自動輪播
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  showSlidesManual(slideIndex);
+  slideTimer = setTimeout(autoSlides, 8000);
+});

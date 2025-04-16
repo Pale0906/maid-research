@@ -1,5 +1,5 @@
 /* ===============================
-   🧭 sidebar.css - 側邊欄樣式（整合漢堡功能）
+   🧭 sidebar.css - 側邊欄樣式（優化：排版 + 響應 + 折疊）
    =============================== */
 
    .sidebar {
@@ -14,7 +14,120 @@
     z-index: 1000;
     color: white;
     transition: transform 0.3s ease;
-    transform: translateX(-100%); /* 預設隱藏 */
+    overflow-y: auto;
+  }
+  
+  /* 📱 響應式：手機預設收起 */
+  @media screen and (max-width: 1775px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+    .sidebar.active {
+      transform: translateX(0);
+    }
+  }
+  
+  /* 🔠 LOGO 區域 */
+  .logo-area {
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .site-name-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.2s ease;
+  }
+  
+  .site-name-link:hover {
+    transform: scale(1.05);
+  }
+  
+  .site-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .logo-area img {
+    height: 60px;
+    display: block;
+  }
+  
+  /* 📂 折疊分類樣式 */
+  .sidebar-section {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .sidebar-section summary {
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    gap: 8px;
+    font-size: 1rem;
+    list-style: none; /* 防止預設 marker 影響 */
+    position: relative;
+    padding-left: 24px; /* 為自訂箭頭預留空間 */
+  }
+  
+  /* 🔽 自訂箭頭圖示 */
+  .sidebar-section summary::before {
+    content: "▶";
+    position: absolute;
+    left: 3px;
+    transition: transform 0.2s ease;
+    font-size: 0.8rem;
+    
+  }
+  
+  /* 🔽 展開時旋轉箭頭 */
+  .sidebar-section[open] > summary::before {
+    transform: rotate(90deg);
+  }
+  
+  .sidebar-section summary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .sidebar-section ul {
+    list-style: none;
+    padding-left: 16px;
+    margin: 0;
+  }
+  
+  .sidebar-section li {
+    margin-bottom: 12px;
+  }
+  
+  .sidebar-section a {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+    font-size: 0.95rem;
+  }
+  
+  .sidebar-section a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .sidebar-section a.active {
+    background-color: rgba(255, 255, 255, 0.3);
+    font-weight: 600;
   }
   
   /* 大螢幕 ≥1775px 預設顯示 */
@@ -78,13 +191,13 @@
   }
   
   .sidebar nav li {
-    margin-bottom: 16px;
+    margin-bottom: 2px;
   }
   
   .sidebar nav a {
     display: block;
     padding: 10px 16px;
-    border-radius: 8px;
+    border-radius: 5px;
     text-decoration: none;
     color: white;
     background-color: transparent;

@@ -61,7 +61,7 @@ function applyFilters() {
     // ✅ 每一個條件獨立比對
     const matchTheme  = filters.theme.length === 0 || filters.theme.some(v => cardTheme.includes(v));
     const matchType   = filters.type.length === 0 || filters.type.some(v => cardType.includes(v));
-    const matchDays   = filters.days.length === 0 || filters.days.some(v => cardDays.includes(v));
+    const matchDays = filters.days.length === 0 || filters.days.some(v => cardDays.includes(v));
     const matchCost   = !filters.cost || cardCost <= parseInt(filters.cost);
     const matchArea   = filters.area.length === 0 || filters.area.includes(cardArea);
     const matchStatus = filters.status === "all" || filters.status === cardStatus;
@@ -79,22 +79,37 @@ function applyFilters() {
 // 📦 重設篩選條件（回復預設）
 if (resetBtn) {
   resetBtn.addEventListener("click", () => {
-    // 讓所有 .filter-tag 都加上 active（預設為全選）
-    [".filter-theme", ".filter-type", ".filter-day", ".filter-area"].forEach(selector => {
-      document.querySelectorAll(selector).forEach(el => el.classList.add("active"));
+
+    // ✅ 主題：只選擇「女僕主題」與「其他主題」
+    document.querySelectorAll(".filter-theme").forEach(el => {
+      const value = el.dataset.value;
+      if (value === "女僕主題" || value === "其他主題") {
+        el.classList.add("active");
+      } else {
+        el.classList.remove("active");
+      }
     });
 
-    // 下拉式預設
+    // ✅ 營業日／類型／地區：預設全不選
+    [".filter-day", ".filter-type", ".filter-area"].forEach(selector => {
+      document.querySelectorAll(selector).forEach(el =>
+        el.classList.remove("active")
+      );
+    });
+
+    // ✅ 下拉選單回預設值
     document.querySelector(".filter-cost").value = "";
     document.querySelector(".filter-status").value = "open";
 
-    // 重設時間滑桿
+    // ✅ 時間滑桿回預設值並更新標籤
     timeSlider.value = 20;
     updateTimeLabel(20);
 
+    // ✅ 套用篩選
     applyFilters();
   });
 }
+
 
 // 手機版篩選器顯示/隱藏功能
 document.querySelector('.filter-toggle').addEventListener('click', function() {
@@ -113,3 +128,50 @@ document.querySelector('.filter-toggle').addEventListener('click', function() {
 // 📦 初始載入後自動篩選一次
 window.addEventListener("DOMContentLoaded", applyFilters);
 
+function applyFilters() {
+  const filters = getFilters();
+  const cards = document.querySelectorAll(".cafe-card");
+  let matchCount = 0;
+
+  // 顯示提示訊息
+  const tipEl = document.getElementById("filter-tip");
+  const allUnselected =
+    filters.days.length === 0 &&
+    filters.type.length === 0 &&
+    filters.area.length === 0;
+
+  if (tipEl) {
+    if (allUnselected) {
+      tipEl.textContent = "提示：若不選擇營業日、類型或地區，將視為不限制條件（顯示全部）";
+    } else {
+      tipEl.textContent = "";
+    }
+  }
+
+  // 篩選邏輯照常處理
+  cards.forEach(card => {
+    const cardTheme = card.dataset.theme?.split(",") || [];
+    const cardType = card.dataset.type?.split(",") || [];
+    const cardDays = card.dataset.days?.split(",") || [];
+    const cardOpen = parseFloat(card.dataset.open);
+    const cardClose = parseFloat(card.dataset.close);
+    const cardCost = parseInt(card.dataset.cost);
+    const cardArea = card.dataset.area;
+    const cardStatus = card.dataset.status;
+
+    const matchTheme = filters.theme.length === 0 || filters.theme.some(v => cardTheme.includes(v));
+    const matchType = filters.type.length === 0 || filters.type.some(v => cardType.includes(v));
+    const matchDays = filters.days.length === 0 || filters.days.some(v => cardDays.includes(v));
+    const matchCost = !filters.cost || cardCost <= parseInt(filters.cost);
+    const matchArea = filters.area.length === 0 || filters.area.includes(cardArea);
+    const matchStatus = filters.status === "all" || filters.status === cardStatus;
+    const matchTime = filters.time >= cardOpen && filters.time <= cardClose;
+
+    const isMatch = matchTheme && matchType && matchDays && matchCost && matchArea && matchStatus && matchTime;
+
+    card.style.display = isMatch ? "block" : "none";
+    if (isMatch) matchCount++;
+  });
+
+  document.getElementById("cafe-count").textContent = matchCount;
+}

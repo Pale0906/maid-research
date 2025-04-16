@@ -28,18 +28,25 @@
       <!-- 橫額 -->
       <div id="header-placeholder"></div>
 
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">首頁</a>
+        <span>›</span>
+        地區導覽
+        <span>›</span>
+        <span class="current">香港</a>
+      </nav>
+
   <!-- 主內容容器 -->
   <div class="content-shift">
-
     <!-- 主區塊：左側為篩選器，右側為店鋪列表 -->
     <div class="main-flex">
+      
         <!-- 顯示篩選器按鈕 -->
         <button class="filter-toggle" onclick="toggleFilter()">顯示篩選器</button>
 
 <!-- 🎛️ 篩選器內容（可收合區塊） -->
 <section class="filter-panel" id="filter-panel">
         <h2>篩選條件</h2>
-
         <div class="filter-group">
             <h3>主題</h3>
             <button type="button" class="filter-tag filter-theme active" data-value="女僕主題">女僕主題</button>
@@ -49,27 +56,34 @@
 
           <div class="filter-group">
             <h3>類型</h3>
-            <button type="button" class="filter-tag filter-type active" data-value="主食">主食</button>
-            <button type="button" class="filter-tag filter-type active" data-value="小食">小食</button>
-            <button type="button" class="filter-tag filter-type active" data-value="飲品">飲品</button>
+            <button type="button" class="filter-tag filter-type" data-value="主食">主食</button>
+            <button type="button" class="filter-tag filter-type" data-value="小食">小食</button>
+            <button type="button" class="filter-tag filter-type" data-value="飲品">飲品</button>
           </div>
 
           <div class="filter-group">
             <h3>營業日</h3>
-            <button type="button" class="filter-tag filter-day active" data-value="Mon">一</button>
-            <button type="button" class="filter-tag filter-day active" data-value="Tue">二</button>
-            <button type="button" class="filter-tag filter-day active" data-value="Wed">三</button>
-            <button type="button" class="filter-tag filter-day active" data-value="Thu">四</button>
-            <button type="button" class="filter-tag filter-day active" data-value="Fri">五</button>
-            <button type="button" class="filter-tag filter-day active" data-value="Sat">六</button>
-            <button type="button" class="filter-tag filter-day active" data-value="Sun">日</button>
+            <button type="button" class="filter-tag filter-day" data-value="Mon">一</button>
+            <button type="button" class="filter-tag filter-day" data-value="Tue">二</button>
+            <button type="button" class="filter-tag filter-day" data-value="Wed">三</button>
+            <button type="button" class="filter-tag filter-day" data-value="Thu">四</button>
+            <button type="button" class="filter-tag filter-day" data-value="Fri">五</button>
+            <button type="button" class="filter-tag filter-day" data-value="Sat">六</button>
+            <button type="button" class="filter-tag filter-day" data-value="Sun">日</button>
           </div>
 
-        <div class="filter-group">
-          <h3>營業時間</h3>
-          <input type="range" class="filter-time" min="12" max="28" value="20" step="0.5">
-          <div class="filter-time-label">顯示 20:00 有營業的店舖</div>
-        </div>
+          <div class="filter-group">
+            <h3>營業時間</h3>
+            <input type="range" class="filter-time" min="12" max="28" value="20" step="0.5" />
+                        <!-- 新增：時間刻度標記 -->
+                        <div class="filter-time-ticks">
+                          <span class="tick-left">12:00</span>
+                          <span class="tick-center">20:00</span>
+                          <span class="tick-right">04:00</span>
+                        </div>
+            <div class="filter-time-label">顯示 20:00 有營業的店舖</div>
+          
+          </div>
 
         <div class="filter-group">
           <h3>最低消費</h3>
@@ -83,10 +97,10 @@
 
         <div class="filter-group">
             <h3>地區</h3>
-            <button type="button" class="filter-tag filter-area active" data-value="葵涌">葵涌</button>
-            <button type="button" class="filter-tag filter-area active" data-value="長沙灣">長沙灣</button>
-            <button type="button" class="filter-tag filter-area active" data-value="旺角">旺角</button>
-            <button type="button" class="filter-tag filter-area active" data-value="中環">中環</button>
+            <button type="button" class="filter-tag filter-area" data-value="葵涌">葵涌</button>
+            <button type="button" class="filter-tag filter-area" data-value="長沙灣">長沙灣</button>
+            <button type="button" class="filter-tag filter-area" data-value="旺角">旺角</button>
+            <button type="button" class="filter-tag filter-area" data-value="中環">中環</button>
           </div>
 
         <div class="filter-group">
@@ -99,6 +113,7 @@
         </div>
 
         <div class="result-count">目前符合條件的店舖：<span id="cafe-count">0</span> 間</div>
+        <p id="filter-tip" class="filter-tip"></p>
         <button id="reset-filters" class="reset-btn">重設篩選條件</button>
       </section>
 
@@ -1174,6 +1189,56 @@
 
   <div class="cafe-note" style="display: none;">
     <a href="/detail/maid-jinja.html">查看詳細介紹</a>
+  </div>
+</div>
+
+<!-- Cafe & Bar Harmony  -->
+<div class="cafe-card"
+  data-theme="相關地點"
+  data-type="主食"
+  data-days="Mon,Wed"
+  data-open="20.0"
+  data-close="27.0"
+  data-cost="88"
+  data-area="中環"
+  data-status="open">
+
+  <!-- 🖼️ 店鋪圖片（預留） -->
+  <div class="cafe-image">
+    <img src="/assets/images/cafes/harmony.jpg" alt="Harmony 圖片">
+  </div>
+
+  <h3 class="cafe-name">Cafe & Bar Harmony</h3>
+
+  <div class="cafe-tags">
+    <span class="tag theme">音符主題</span>
+	<span class="tag theme">酒吧</span>
+    <span class="tag type">提供主食</span>
+  </div>
+
+  <p class="cafe-address">中環雲咸街地庫31C-D</p>
+
+  <p class="cafe-price">最低消費: $88</p>
+  <div class="cafe-socials">
+    <a href="https://www.instagram.com/cafebar_harmony.lkf/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/profile.php?id=61557895502397" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+  </div>
+
+  <details class="cafe-hours">
+    <summary>營業時間</summary>
+    <ul>
+      <li>星期一：20:00–03:00</li>
+      <li>星期二：休息</li>
+      <li>星期三：20:00–03:00</li>
+      <li>星期四：休息</li>
+      <li>星期五：休息</li>
+      <li>星期六：休息</li>
+      <li>星期日：休息</li>
+    </ul>
+  </details>
+
+  <div class="cafe-note" style="display: none;">
+    <a href="/detail/harmony.html">查看詳細介紹</a>
   </div>
 </div>
 

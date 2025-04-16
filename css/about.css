@@ -1,98 +1,212 @@
-.about-container {
-    padding: 2rem;
-    max-width: 900px;
+/* ===============================
+   🧾 about.css - 關於我們頁面樣式
+   =============================== */
+
+   .about-container {
+    max-width: 960px;
     margin: 0 auto;
+    padding: 40px 24px;
+    box-sizing: border-box;
   }
   
-  .about-intro, .about-members {
-    margin-bottom: 3rem;
-  }
-  
-  .contributions {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .contributions li {
-    margin: 0.5rem 0;
-  }
-  
-  .member-card {
-    border: 2px solid var(--primary-color, #007bff);
-    padding: 1.5rem;
+  .about-section {
+    background-color: #ffffff;
     border-radius: 12px;
-    background: #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    max-width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 32px 24px;
+    margin-bottom: 32px;
   }
   
-  .member-card h4 {
-    margin-top: 0;
+  .about-section h2 {
+    margin-top: 0px;
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-color);
   }
   
-  .social-toggle-btn {
-    margin-top: 1rem;
-    background-color: var(--primary-color, #007bff);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
+  .about-section h3 {
+    font-size: 1.2rem;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    color: var(--primary-color);
   }
   
-  .personal-links {
+  .about-list,
+  .about-links {
     list-style: none;
     padding-left: 0;
-    margin-top: 1rem;
+    margin: 0;
   }
   
-  .personal-links li {
-    margin: 0.3rem 0;
+  .about-list li,
+  .about-links li {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
   
-  .hidden {
-    display: none;
+  .about-links a {
+    color: var(--primary-color);
+    text-decoration: none;
   }
   
-    /* ✅ 社群連結 */
-    .member-socials {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-bottom: 12px;
-      }
-      
-      .member-socials a {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 6px 12px;
-        background-color: #f5f7ff;
-        border: 1px solid #d6e0ff;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: #375a7f;
-        text-decoration: none;
-        transition: all 0.25s ease;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      }
-      
-      .member-socials a i {
-        font-size: 1rem;
-        color: #4e79ff;
-        transition: transform 0.2s ease;
-      }
-      
-      .member-socials a:hover {
-        background-color: #e1eaff;
-        border-color: #4e79ff;
-        color: #1e3f8f;
-      }
-      
-      .member-socials a:hover i {
-        transform: scale(1.2);
-        color: #2f60ff;
-      }
-      
+  .about-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* 🧍‍♀️ 成員卡片樣式 */
+  .member-card {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #fafafa;
+    padding: 20px;
+    margin-top: 16px;
+  }
+  
+  .member-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+  
+  .member-socials p {
+    margin: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .member-socials a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .member-socials a:hover {
+    text-decoration: underline;
+  }
+  
+  /* ➕ 成員卡片可收合 */
+  details.member-card {
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  details.member-card summary {
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    list-style: none;
+  }
+  
+  details.member-card[open] {
+    background-color: #f0f0ff;
+  }
+  
+  /* 響應式處理 */
+  @media screen and (max-width: 768px) {
+    .about-container {
+      padding: 24px 16px;
+    }
+  
+    .about-section {
+      padding: 24px 16px;
+    }
+  }
+  .about-buttons,
+.member-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.social-btn:hover {
+  background-color: #0056b3;
+}
+
+.member-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.member-card {
+  flex: 1 1 calc(50% - 10px); /* 兩欄，每欄約50% - 間距 */
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.member-card summary {
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.member-card[open] {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.member-socials {
+  margin-top: 12px;
+}
+
+.social-btn {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.social-btn i {
+  margin-right: 6px;
+}
+
+.social-btn:hover {
+  
+  background-color: #467ce1;
+}
+
+/* 📱 響應式調整：手機改為單欄 */
+@media screen and (max-width: 768px) {
+  .member-card {
+    flex: 1 1 100%;
+  }
+}
